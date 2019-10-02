@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+//FUNCTION FOR BREADTH FIRST SEARCH
 void BFS(vector<int>nodes[]) {
 	int first;
 	queue<int> q;
@@ -15,9 +17,53 @@ void BFS(vector<int>nodes[]) {
 		cout << first << " ";
 		q.pop();
 		for (vector<int>::iterator itr = nodes[first].begin(); itr != nodes[first].end(); itr++) {
-			if (visited[*itr] == false) {
+			if (!visited[*itr]) {
 				q.push(*itr);
 				visited[*itr] = true;
+			}
+		}
+	}
+}
+
+//SECONDARY-FUNCTION FOR DEPTH FIRST SEARCH (RECURSIVE)
+void DFSUntil(int start, vector<int>nodes[], bool visited[]) {
+	visited[start] = true;
+	cout << start << " ";
+	int size= nodes[start].size();
+	for (int i = 0; i<size; i++) {
+		if (!visited[nodes[start][i]]) {
+			DFSUntil(nodes[start][i], nodes, visited);
+		}
+	}
+}
+void DFS(vector<int>nodes[]) {
+	//RECURSIVE
+	/*int start;
+	cout << "Enter the starting node" << endl;;
+	cin >> start;
+	bool visited[100];
+	memset(visited, false, sizeof(visited));
+	cout << "Depth First Search:" << endl;
+	DFSUntil(start, nodes,visited);*/
+
+	//ITERATIVE
+	int first;
+	stack<int> stk;
+	bool visited[100];
+	memset(visited, false, sizeof(visited));
+	cout << "Enter the starting node" << endl;;
+	cin >> first;
+	visited[first] = true;
+	stk.push(first);
+	cout << "Depth First Search:" << endl;
+	while (!stk.empty()) {
+		first = stk.top();
+		cout << first << " ";
+		stk.pop();
+		for (/*auto itr : nodes[first]*/vector<int>::iterator itr = nodes[first].begin(); itr != nodes[first].end(); itr++) {
+			if (!visited[*itr]) {
+				visited[*itr] = true;
+				stk.push(*itr);
 			}
 		}
 	}
@@ -49,6 +95,9 @@ int main() {
 	cout << endl;
 	//BREADTH FIRST SEARCH
 	BFS(nodes);
+	cout << endl;
+	//DEPTH FIRST SEARCH
+	DFS(nodes);
 }
 /*sample input
 1	-	2
