@@ -1,3 +1,9 @@
+/******************************************************************************
+
+							  SATYAM PANDEY
+
+*******************************************************************************/
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -30,6 +36,7 @@ Node* Insert(Node* root, int data) {
 	}
 	return root;
 }
+
 // LEVEL ORDER TRAVERSAL
 void LevelOrderTraversal(Node* root) {
 	if (root == NULL) {
@@ -46,6 +53,7 @@ void LevelOrderTraversal(Node* root) {
 	}
 	cout << endl;
 }
+
 // SEARCHING A DATA
 bool Search(Node* root, int data) {
 	if (root == NULL) {
@@ -63,6 +71,7 @@ bool Search(Node* root, int data) {
 	}
 	return false;
 }
+
 //FIND MINIMUM AND MAXIMUM IN A TREE
 void findminmax(Node* root) {
 	if (!root) {
@@ -79,12 +88,76 @@ void findminmax(Node* root) {
 	}
 	cout << "Maximum = " << current->data << endl;
 }
+
+//RECURSIVE FUNCTION TO COUNT LEAF NODES IN A TREE
+int reccountLeaves(Node* root)
+{
+	if (root == NULL) {
+		return 0;
+	}
+	if (root->left == NULL && root->right == NULL) {
+		return 1;
+	}
+	return reccountLeaves(root->left) + reccountLeaves(root->right);
+}
+
+//FUNCTION TO COUNT LEAF NODES IN A TREE
+int countLeaves(Node* root)
+{
+
+	queue<Node*> q;
+	Node* temp;
+	q.push(root);
+	int count = 0;
+	while (!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		if (!temp->left && !temp->right)
+			count++;
+		else
+		{
+			if (temp->left)
+				q.push(temp->left);
+			if (temp->right)
+				q.push(temp->right);
+		}
+	}
+	return count;
+}
+
+//Maximum sum of path from one left node to another
+int rootToLeafSum(Node* root, int& ans)
+{
+	if (root == NULL)
+		return 0;
+	int ls = rootToLeafSum(root->left, ans);
+	int rs = rootToLeafSum(root->right, ans);
+	ans = max(ans, ls + rs + root->data);
+	return(ls > rs ? ls : rs + root->data);
+}
+int maxPathSum(struct Node* root)
+{
+	if (root == NULL) return 0;
+	int ans = INT_MIN;
+	rootToLeafSum(root, ans);
+	return ans;
+}
+
+//Height of a tree
+int height(Node* node)
+{
+	if (node == NULL) return 0;
+	return max(height(node->left), height(node->right)) + 1;
+}
+
 // MAIN FUNCTION
 int main() {
 	int num_of_nodes,data;
 	cout << "Enter number of nodes" << endl;
 	cin >> num_of_nodes;
 	Node* root = NULL;
+
 	//INSERTION
 	cout << "Insert Elements"<<endl;
 	for (int i = 0; i < num_of_nodes; i++) {
@@ -110,6 +183,16 @@ int main() {
 	cout << "Finding Min and Max" << endl;
 	findminmax(root);
 
+	//COUNT LEAF NODES
+	cout << countLeaves(root) << endl;
+	//cout << reccountLeaves(root) << endl;
+
+	//MAX SUM FOR PATH ONE LEAF TO ANOTHER
+	cout<<maxPathSum(root);
+
+	//HEIGHT OF A TREE
+	cout<<height(root);
+	
 
 	return 0;
 }
