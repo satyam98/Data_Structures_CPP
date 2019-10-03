@@ -1,12 +1,13 @@
 ﻿  Source.cpp
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(8,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(46,16): warning C4018:  '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(50,16): warning C4018:  '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(59,16): warning C4018:  '<=': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(60,17): warning C4018:  '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(41,45): warning C4101:  'cstart': unreferenced local variable
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(41,59): warning C4101:  'length': unreferenced local variable
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(41,53): warning C4101:  'cend': unreferenced local variable
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(80,11): warning C4018:  '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(151): warning C4715:  'isBalanced': not all control paths return a value
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(9,20): warning C4018:  '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(47,16): warning C4018:  '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(51,16): warning C4018:  '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(60,16): warning C4018:  '<=': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(61,17): warning C4018:  '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(42,45): warning C4101:  'cstart': unreferenced local variable
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(42,59): warning C4101:  'length': unreferenced local variable
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(42,53): warning C4101:  'cend': unreferenced local variable
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(81,11): warning C4018:  '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(158,22): warning C4018:  '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(168,20): warning C4018:  '<': signed/unsigned mismatch
   Strings.vcxproj -> D:\Git\Data_Structures_CPP\Strings\Debug\Strings.exe

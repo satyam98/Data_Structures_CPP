@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <unordered_map> 
 using namespace std;
 
 //FUNCTION TO REVERSE WORDS IN A GIVEN STRING
@@ -149,6 +150,38 @@ string isBalanced(string s) {
 	}
 }
 
+//FUNCTION FOR FINDING ANAGRAMS IN A VECTOR OF STRINGS
+void findanagram(unordered_map<string, vector<string>>& store) {
+	for (auto itr = store.begin(); itr != store.end(); itr++) {
+		vector<string> temp = itr->second;
+		if (temp.size() > 1) {
+			for (int i = 0; i < temp.size(); i++) {
+				cout << temp[i] << " ";
+			}
+			cout << endl;
+		}
+	}
+	
+}
+void storeinmap(vector<string> &ana) {
+	unordered_map<string, vector<string> > store;
+	for (int i = 0; i < ana.size(); i++) {
+		string temp=ana[i];
+		sort(temp.begin(), temp.end());
+		if (store.find(temp) == store.end()) {
+			vector<string> temp_vec;
+			temp_vec.push_back(ana[i]);
+			store.insert({ temp,temp_vec });
+		}
+		else {
+			vector<string> temp_vec = store[temp];
+			temp_vec.push_back(ana[i]);
+			store[temp] = temp_vec;
+		}
+	}
+	findanagram(store);
+}
+
 int main()
 {
 	int tc;
@@ -161,7 +194,19 @@ int main()
 		//LargestPalindrome(str);
 		//str = RemoveDup(str); cout << str << endl;
 		//cout << findPalinMinInsertions(str, 0, str.size()- 1);
-		cout << isBalanced(str) << endl;
+		//cout << isBalanced(str) << endl;
+		/*if (str == "anagram") {
+			vector<string> arr;
+			cout << "No of strings" << endl;
+			int size;
+			cin >> size;
+			string ana;
+			for (int i = 0; i < size; i++) {
+				cin >> ana;
+				arr.push_back(ana);
+			}
+			storeinmap(arr);
+		}*/
 	}
 	
 	return 0;
