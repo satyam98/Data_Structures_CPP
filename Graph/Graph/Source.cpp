@@ -26,7 +26,7 @@ void BFS(vector<int>nodes[]) {
 }
 
 //SECONDARY-FUNCTION FOR DEPTH FIRST SEARCH (RECURSIVE)
-void DFSUntil(int start, vector<int>nodes[], bool visited[]) {
+/*void DFSUntil(int start, vector<int>nodes[], bool visited[]) {
 	visited[start] = true;
 	cout << start << " ";
 	int size= nodes[start].size();
@@ -35,7 +35,7 @@ void DFSUntil(int start, vector<int>nodes[], bool visited[]) {
 			DFSUntil(nodes[start][i], nodes, visited);
 		}
 	}
-}
+}*/
 void DFS(vector<int>nodes[]) {
 	//RECURSIVE
 	/*int start;
@@ -65,6 +65,37 @@ void DFS(vector<int>nodes[]) {
 				visited[*itr] = true;
 				stk.push(*itr);
 			}
+		}
+	}
+}
+
+//FUNCTION TO FIND CYCLES IN A GRAPH
+bool bfs(vector<int> adj[]) {
+	int vis[100];
+	queue<int> q;
+	memset(vis, -1, sizeof(vis));
+	for (int i = 0; i < 100; i++) {				//traversing nodes
+		if (!adj[i].empty()) {					//find valid nodes
+			if (vis[i] == -1)					//if nodes is not visited
+				q.push(i);						//push it to Queue
+			while (!q.empty()) {				//while Queue is not empty
+				int front = q.front();			//node at top of queue becomes current node
+				if (vis[front] == -1)			//if not visited then mark as visited
+					vis[front] == 0;		
+				for (auto itr : adj[front]) {	//iterate in the connected nodes of current node
+					if (vis[itr] == -1) {		//if node is not visited then push it into queue and mark it as visited
+						q.push(itr);
+						vis[itr] = 0;
+					}
+					else if (vis[itr] == 0) {	// if node is already visited then return cycle is present
+						return true;
+					}
+				}
+				vis[q.front()] = 1;				// make current node completely visited
+				q.pop();						// pop out the current node
+
+			}
+			return false;
 		}
 	}
 }
@@ -98,6 +129,9 @@ int main() {
 	cout << endl;
 	//DEPTH FIRST SEARCH
 	DFS(nodes);
+	cout << endl << endl;
+	// DETECT CYCLE
+	cout<<"Cycle is there? "<<bfs(nodes)<< endl;;
 }
 /*sample input
 1	-	2

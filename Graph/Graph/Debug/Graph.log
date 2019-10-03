@@ -1,2 +1,4 @@
 ﻿  Source.cpp
+D:\Git\Data_Structures_CPP\Graph\Graph\Source.cpp(84,17): warning C4553:  '==': result of expression not used; did you intend '='?
+D:\Git\Data_Structures_CPP\Graph\Graph\Source.cpp(101): warning C4715:  'bfs': not all control paths return a value
   Graph.vcxproj -> D:\Git\Data_Structures_CPP\Graph\Debug\Graph.exe
