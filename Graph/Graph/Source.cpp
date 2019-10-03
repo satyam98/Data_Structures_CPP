@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<algorithm>
 using namespace std;
 
 //FUNCTION FOR BREADTH FIRST SEARCH
@@ -81,7 +82,7 @@ bool bfs(vector<int> adj[]) {
 			while (!q.empty()) {				//while Queue is not empty
 				int front = q.front();			//node at top of queue becomes current node
 				if (vis[front] == -1)			//if not visited then mark as visited
-					vis[front] == 0;		
+					vis[front] = 0;		
 				for (auto itr : adj[front]) {	//iterate in the connected nodes of current node
 					if (vis[itr] == -1) {		//if node is not visited then push it into queue and mark it as visited
 						q.push(itr);
@@ -99,7 +100,10 @@ bool bfs(vector<int> adj[]) {
 		}
 	}
 }
-int main() {
+
+
+//UN-WEIGHTED GRAPH
+/*int main() {
 
 	//CREATING A GRAPH
 	int edges, a, b;
@@ -132,8 +136,9 @@ int main() {
 	cout << endl << endl;
 	// DETECT CYCLE
 	cout<<"Cycle is there? "<<bfs(nodes)<< endl;;
-}
-/*sample input
+}*/
+/*
+Sample Input
 1	-	2
 |	\	|
 4	-	3
@@ -141,6 +146,7 @@ int main() {
 	5
 /		\
 6		7
+
 1 2
 1 3		
 1 4		
@@ -150,3 +156,55 @@ int main() {
 4 5		
 5 6		
 5 7*/
+
+//TRAVELLING SALESMEN PROBLEM 
+void tsp(int graph[][4], vector<bool>& v, int currPos,
+	int n, int count, int cost, int& ans)
+{
+	if (count == n && graph[currPos][0]) {
+		ans = min(ans, cost + graph[currPos][0]);
+		return;
+	}
+
+	for (int i = 0; i < n; i++) {
+		if (!v[i] && graph[currPos][i]) {
+
+			// Mark as visited 
+			v[i] = true;
+			tsp(graph, v, i, n, count + 1,
+				cost + graph[currPos][i], ans);
+
+			// Mark ith node as unvisited 
+			v[i] = false;
+		}
+	}
+};
+
+//WEIGHTED GRAPH
+int main()
+{
+	// n is the number of nodes i.e. V 
+	int n = 4;
+
+	int graph[][4] = {
+		{ 0, 10, 15, 20 },
+		{ 10, 0, 35, 25 },
+		{ 15, 35, 0, 30 },
+		{ 20, 25, 30, 0 }
+	};
+
+	vector<bool> v(n);
+	for (int i = 0; i < n; i++)
+		v[i] = false;
+
+	v[0] = true;
+	int ans = INT_MAX;
+
+	// Find the minimum weight Hamiltonian Cycle 
+	tsp(graph, v, 0, n, 1, 0, ans);
+
+	// ans is the minimum weight Hamiltonian Cycle 
+	cout << ans;
+
+	return 0;
+}
