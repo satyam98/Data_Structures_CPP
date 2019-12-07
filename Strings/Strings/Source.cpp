@@ -90,12 +90,18 @@ string RemoveDup(string str) {
 		i++;
 	}
 	return temp;
-	/*if (temp == str) {
-		return str;
+}
+string removeDupSTLMap(string s) {
+	string output;
+	map<char, bool> mp;
+	int size = s.length();
+	for (int i = 0; i < size; i++) {
+		if (mp.find(s[i]) == mp.end()) {
+			mp.insert({ s[i],true });
+			output = output + s[i];
+		}
 	}
-	else {
-		return RecursiveRemoveDup(temp);
-	}*/
+	return output;
 }
 
 // RECURSIVE FUNCTION TO FIND MINIMUM NUMBER OF INSERTION IN A STRING TO MAKE IT PALINDROME
@@ -186,13 +192,15 @@ int main()
 {
 	int tc;
 	cin >> tc;
+	cin.ignore();
 	while (tc--) {
 		string str;
-		cin >> str;
+		getline(cin, str);
 		//ReverseWordsInAGivenString(str);
 		//PrintPermutations(str);
 		//LargestPalindrome(str);
 		//str = RemoveDup(str); cout << str << endl;
+		//cout << removeDupSTLMap(str);
 		//cout << findPalinMinInsertions(str, 0, str.size()- 1);
 		//cout << isBalanced(str) << endl;
 		/*if (str == "anagram") {
