@@ -188,6 +188,80 @@ void storeinmap(vector<string> &ana) {
 	findanagram(store);
 }
 
+//FUNCTIONS TO FIND NUMBER OF POSSIBLE PARTITION IN A STRING WITH M ELEMENTS HAVING SAME FREQUENCY
+int countWays(string str)
+{
+	int m;
+	cin >> m;
+	// Hashset to store unique characters 
+	// in the given string 
+	set<char> s;
+	for (int i = 0; i < str.length(); i++)
+		s.insert(str[i]);
+
+	// To store the number of ways 
+	// to partition the string 
+	int result = 0;
+
+	for (int i = 1; i < str.length(); i++)
+	{
+		// Hashmaps to store frequency of characters 
+		// of both the partitions 
+		map<char, int> first_map, second_map;
+
+		// Iterate in the first partition 
+		for (int j = 0; j < i; j++) {
+
+			// If character already exists in the hashmap 
+			// then increase it's frequency 
+			first_map[str[j]]++;
+		}
+
+		// Iterate in the second partition 
+		for (int k = 0; k < str.length(); k++)
+
+			// If character already exists in the hashmap 
+			// then increase it's frequency 
+			second_map[str[k]]++;
+
+		// Iterator for HashSet 
+		set<char>::iterator itr = s.begin();
+
+		// To store the count of characters that have 
+		// equal frequencies in both the partitions 
+		int total_count = 0;
+		while (++itr != s.end())
+		{
+			// first_count and second_count keeps track 
+			// of the frequencies of each character 
+			int first_count = 0, second_count = 0;
+			char ch = *(itr);
+
+			// Frequency of the character 
+			// in the first partition 
+			if (first_map.find(ch) != first_map.end())
+				first_count = first_map[ch];
+
+			// Frequency of the character 
+			// in the second partition 
+			if (second_map.find(ch) != second_map.end())
+				second_count = second_map[ch];
+
+			// Check if frequency is same  
+			// in both the partitions 
+			if (first_count == second_count &&
+				first_count != 0)
+				total_count += 1;
+		}
+
+		// Check if the condition is satisfied 
+		// for the current partition 
+		if (total_count >= m)
+			result += 1;
+	}
+	return result;
+}
+
 int main()
 {
 	int tc;
@@ -215,6 +289,7 @@ int main()
 			}
 			storeinmap(arr);
 		}*/
+		cout<<countWays(str);
 	}
 	
 	return 0;
