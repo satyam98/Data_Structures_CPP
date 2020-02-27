@@ -10,7 +10,7 @@ D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(42,53): warning C4101: 'ce
 D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(81,11): warning C4018: '<': signed/unsigned mismatch
 D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(164,22): warning C4018: '<': signed/unsigned mismatch
 D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(199,20): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(206,20): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(221,21): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(213,20): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(220,20): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Data_Structures_CPP\Strings\Strings\Source.cpp(235,21): warning C4018: '<': signed/unsigned mismatch
   Strings.vcxproj -> D:\Git\Data_Structures_CPP\Strings\Debug\Strings.exe

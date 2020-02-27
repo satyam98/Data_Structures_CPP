@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include <unordered_map> 
+#include<unordered_map>
 using namespace std;
 
 //FUNCTION TO REVERSE WORDS IN A GIVEN STRING
@@ -104,7 +104,7 @@ string removeDupSTLMap(string s) {
 	return output;
 }
 
-// RECURSIVE FUNCTION TO FIND MINIMUM NUMBER OF INSERTION IN A STRING TO MAKE IT PALINDROME
+// RECURSIVE FUNCTION TO FIND MINIMUM NUMBER OF INSERTION IN A STRING TO MAKE IT PALINDROME (USING RECURSION ONLY)
 int findPalinMinInsertions(string str, int l, int h)
 {
 	// Base Cases 
@@ -114,6 +114,20 @@ int findPalinMinInsertions(string str, int l, int h)
 
 	// Check if the first and last characters are same. On the basis of the comparison result, decide which subrpoblem(s) to call 
 	return (str[l] == str[h]) ? findPalinMinInsertions(str, l + 1, h - 1) : min(findPalinMinInsertions(str, l, h - 1),findPalinMinInsertions(str, l + 1, h)) + 1;
+}
+// RECURSIVE FUNCTION TO FIND MINIMUM NUMBER OF INSERTION IN A STRING TO MAKE IT PALINDROME (USING RECURSION WITH DP
+int findPalinMinInsDP(map<string, int>& map, string s, int l, int h) {
+	if (l > h) return INT_MAX;
+	if (l == h) return 0;
+	if (l == h - 1) return (s[h] == s[l]) ? 0 : 1;
+	//using dynamic programming
+	if (map.find(s) == map.end())
+		map[s.substr(l + 1, h - l - 1)] = findPalinMinInsDP(map, s, l + 1, h - 1);
+	if (map.find(s.substr(l, h - l)) == map.end())
+		map[s.substr(l, h - l)] = findPalinMinInsDP(map, s, l, h - 1);
+	if (map.find(s.substr(l + 1, h - l)) == map.end())
+		map[s.substr(l + 1, h - l)] = findPalinMinInsDP(map, s, l + 1, h);
+	return (s[h] == s[l]) ? map[s.substr(l + 1, h - l - 1)] : (1 + min(map[s.substr(l, h - l)], map[s.substr(l + 1, h - l)]));
 }
 
 // FUNCTION TO CHECK IF A STRING IS BALANCED (USING STACK)
@@ -191,6 +205,20 @@ void storeinmap(vector<string> &ana) {
 //FUNCTIONS TO FIND NUMBER OF POSSIBLE PARTITION IN A STRING WITH M ELEMENTS HAVING SAME FREQUENCY
 int countWays(string str)
 {
+/*QUESTION EXPLANATION 
+Input: str = “aabbccaa”, m = 2
+Output : 2
+The string has length 8, so there are 7 positions available to perform the partition.
+i.e.a | a | b | b | c | c | a | a
+Only two partitions are possible which satisfy the given constraints.
+aab | bccaa – On the left half of the separator, ‘a’ has frequency 2 and ‘b’ has frequency 1
+which is same as that of the right half.
+aabbc | caa – On the left half of the separator, ‘a’ has frequency 2 and ‘c’ has frequency 1
+which is same as that of the right half.
+
+Input: str = “aabbaa”, m = 2
+Output : 1
+*/
 	int m;
 	cin >> m;
 	// Hashset to store unique characters 
@@ -289,7 +317,10 @@ int main()
 			}
 			storeinmap(arr);
 		}*/
-		cout<<countWays(str);
+		//cout<<findPalinMinInsertions(str, 0, str.length()-1);
+		map<string, int>map;
+		cout << findPalinMinInsDP(map, str, 0, str.length() - 1) << endl;
+		//cout<<countWays(str);
 	}
 	
 	return 0;
