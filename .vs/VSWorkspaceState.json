@@ -2,8 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\Arrays",
-    "\\Graph"
+    "\\Arrays\\Arrays",
+    "\\Graph",
+    "\\Stacks",
+    "\\Strings",
+    "\\Tree",
+    "\\Tree\\Tree"
   ],
-  "SelectedNode": "\\Graph\\Graph.sln",
+  "SelectedNode": "\\Strings\\Strings.sln",
   "PreviewInSolutionExplorer": false
 }

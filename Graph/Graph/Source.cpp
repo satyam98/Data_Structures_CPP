@@ -27,7 +27,7 @@ void BFS(vector<int>nodes[]) {
 }
 
 //SECONDARY-FUNCTION FOR DEPTH FIRST SEARCH (RECURSIVE)
-/*void DFSUntil(int start, vector<int>nodes[], bool visited[]) {
+void DFSUntil(int start, vector<int>nodes[], bool visited[]) {
 	visited[start] = true;
 	cout << start << " ";
 	int size= nodes[start].size();
@@ -36,7 +36,7 @@ void BFS(vector<int>nodes[]) {
 			DFSUntil(nodes[start][i], nodes, visited);
 		}
 	}
-}*/
+}
 void DFS(vector<int>nodes[]) {
 	//RECURSIVE
 	/*int start;

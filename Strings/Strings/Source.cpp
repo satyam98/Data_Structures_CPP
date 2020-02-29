@@ -91,6 +91,7 @@ string RemoveDup(string str) {
 	}
 	return temp;
 }
+//OR
 string removeDupSTLMap(string s) {
 	string output;
 	map<char, bool> mp;
